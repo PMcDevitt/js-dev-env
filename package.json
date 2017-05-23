@@ -11,7 +11,7 @@
     "share": "npm-run-all --parallel open:src localtunnel",
     "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --reporter progress buildScripts/testSetup.js 'Src/**/*.test.js'",
+    "test": "mocha --reporter progress buildScripts/testSetup.js 'src/**/*.test.js'",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Patrick McDevitt",
