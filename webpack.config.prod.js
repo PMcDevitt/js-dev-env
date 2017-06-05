@@ -30,6 +30,7 @@ export default {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor'
     }),
+    // Create HTML file that includes reference to bundled JS.
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       minify: {
@@ -44,7 +45,10 @@ export default {
         minifyCSS: true,
         minifyURLs: true
       },
-      inject: true
+      inject: true,
+      // Properties you define here are available in index.html
+      // using htmlWebpackPlugin.options.varName
+      trackJSToken: 'e339a39623314ed3b80db90966f224ff'
     }),
     //Eliminate duplicate packages when creating bundle
     new webpack.optimize.DedupePlugin(),
@@ -53,6 +57,7 @@ export default {
     ],
   module: {
     loaders: [
+      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
       {test: /\.css$/, loader: ExtractTextPlugin.extract('css?sourceMap')}
     ]
